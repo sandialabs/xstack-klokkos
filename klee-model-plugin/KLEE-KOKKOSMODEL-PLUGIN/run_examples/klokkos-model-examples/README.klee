@@ -1,0 +1,43 @@
+-sh-4.2$ clang -I ../../include -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone Regexp.c
+-sh-4.2$ klee ./Regexp.bc
+KLEE: output directory is "/home-emu/smukher/Kokkos-work/klee/examples/regexp/./klee-out-1"
+KLEE: Using Z3 solver backend
+KLEE: ERROR: Regexp.c:23: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: Regexp.c:25: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location
+
+KLEE: done: total instructions = 4848112
+KLEE: done: completed paths = 6675
+KLEE: done: partially completed paths = 763
+KLEE: done: generated tests = 6677
+
+
+
+======
+
+Second example with uclibc and printf
+
+clang -I../../include/ -emit-llvm -c -g sort.c
+-sh-4.2$ klee --libc=uclibc --posix-runtime  ./sort.bc
+KLEE: NOTE: Using POSIX model: /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib64/klee/runtime/libkleeRuntimePOSIX64_Debug+Asserts.bca
+KLEE: NOTE: Using klee-uclibc : /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib64/klee/runtime/klee-uclibc.bca
+KLEE: output directory is "/home-emu/smukher/Kokkos-work/klee/examples/sort/./klee-out-3"
+KLEE: Using Z3 solver backend
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 133374512) at runtime/POSIX/fd.c:1007 10
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling __klee_posix_wrapped_main with extra arguments.
+KLEE: ERROR: sort.c:52: external call with symbolic argument: printf
+KLEE: NOTE: now ignoring this error at this location
+
+KLEE: done: total instructions = 13581
+KLEE: done: completed paths = 0
+KLEE: done: partially completed paths = 1
+KLEE: done: generated tests = 1
+
+====== Allowing all external calls ======
+
+klee --libc=uclibc --posix-runtime --allow-external-sym-calls ./sort.bc
+
+

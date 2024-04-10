@@ -1,0 +1,135 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 3.52 3.52 3.52
+Created orthogonal box = (0 0 0) to (56.32 35.2 9.956063)
+  1 by 1 by 1 MPI processor grid
+Lattice spacing in x,y,z = 3.52 4.9780317 4.9780317
+Created 1912 atoms
+  using lattice units in orthogonal box = (-0.005632 -0.00352 0) to (56.325632 35.20352 9.956063)
+  create_atoms CPU = 0.001 seconds
+Reading eam potential file Ni_u3.eam with DATE: 2007-06-11
+264 atoms in group lower
+264 atoms in group upper
+528 atoms in group boundary
+1384 atoms in group mobile
+Setting atom values ...
+  264 settings made for type
+Setting atom values ...
+  264 settings made for type
+WARNING: Temperature for thermo pressure is not for group all (src/thermo.cpp:521)
+Neighbor list info ...
+  update: every = 1 steps, delay = 5 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.1
+  ghost atom cutoff = 5.1
+  binsize = 5.1, bins = 12 7 2
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/kk, perpetual
+      attributes: half, newton on, kokkos_device
+      pair build: half/bin/newton/kk/device
+      stencil: half/bin/3d
+      bin: kk/device
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Per MPI rank memory allocation (min/avg/max) = 3.582 | 3.582 | 3.582 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   300           -8317.4367      0             -8263.8067     -7100.7667      19547.02     
+        25   220.34557     -8272.5704      0             -8233.1799      5165.1977      19547.02     
+        50   300           -8237.7876      0             -8184.1576      13736.39       19686.56     
+        75   292.67203     -8229.809       0             -8177.4889      14315.821      19745.016    
+       100   300           -8245.8173      0             -8192.1872      9033.2393      19778.647    
+Loop time of 0.060916 on 1 procs for 100 steps with 1912 atoms
+
+Performance: 141.835 ns/day, 0.169 hours/ns, 1641.605 timesteps/s, 3.139 Matom-step/s
+99.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.025259   | 0.025259   | 0.025259   |   0.0 | 41.47
+Neigh   | 0.0012589  | 0.0012589  | 0.0012589  |   0.0 |  2.07
+Comm    | 0.017674   | 0.017674   | 0.017674   |   0.0 | 29.01
+Output  | 0.00044109 | 0.00044109 | 0.00044109 |   0.0 |  0.72
+Modify  | 0.013302   | 0.013302   | 0.013302   |   0.0 | 21.84
+Other   |            | 0.002981   |            |       |  4.89
+
+Nlocal:           1912 ave        1912 max        1912 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           2122 ave        2122 max        2122 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          45975 ave       45975 max       45975 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 45975
+Ave neighs/atom = 24.045502
+Neighbor list builds = 4
+Dangerous builds = 0
+WARNING: Temperature for thermo pressure is not for group all (src/thermo.cpp:521)
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Per MPI rank memory allocation (min/avg/max) = 3.582 | 3.582 | 3.582 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   298.42815     -8245.8173      0             -8210.2512      8054.6566      19786.165    
+       100   300           -8260.8713      0             -8225.118       3155.6737      19816.983    
+       200   298.53267     -8257.8815      0             -8222.303       1709.3909      19934.849    
+       300   296.78267     -8250.2614      0             -8214.8914     -345.70772      20060.303    
+       400   306.82148     -8245.2711      0             -8208.7048     -5.8632839      20144.79     
+       500   298.6851      -8240.2263      0             -8204.6296      719.77239      20170.339    
+       600   302.34471     -8230.4612      0             -8194.4284      3995.486       20289.616    
+       700   300           -8222.0073      0             -8186.2539      6777.9126      20397.296    
+       800   303.26538     -8210.994       0             -8174.8515      8168.8798      20520.512    
+       900   297.89863     -8197.2713      0             -8161.7684      10756.993      20645.099    
+      1000   300           -8180.7567      0             -8145.0033      14220.886      20752.586    
+      1100   306.15577     -8166.7037      0             -8130.2167      18034.37       20886.945    
+      1200   295.29895     -8152.1899      0             -8116.9968      21300.389      20994.432    
+      1300   300           -8142.4738      0             -8106.7204      22680.371      21128.791    
+      1400   300           -8131.21        0             -8095.4566      23285.273      21241.164    
+      1500   300           -8126.4347      0             -8090.6814      21878.307      21364.53     
+      1600   300           -8130.2923      0             -8094.5389      17952.933      21497.667    
+      1700   300           -8152.299       0             -8116.5457      11177.028      21608.819    
+      1800   300           -8160.339       0             -8124.5856      7432.4744      21745.621    
+      1900   308.86502     -8155.4307      0             -8118.6208      8093.8126      21862.879    
+      2000   302.23186     -8158.0242      0             -8122.0049      6526.4373      21987.467    
+      2100   300           -8158.3706      0             -8122.6173      4266.4396      22109.611    
+      2200   303.40894     -8157.1284      0             -8120.9688      2628.6305      22228.091    
+      2300   307.05083     -8164.2904      0             -8127.6968     -47.886091      22355.121    
+      2400   307.87747     -8166.3904      0             -8129.6983     -1577.1293      22469.937    
+      2500   299.19294     -8163.1959      0             -8127.5387      636.93991      22596.967    
+      2600   301.10208     -8158.4715      0             -8122.5868      2799.0244      22711.783    
+      2700   304.03369     -8160.2296      0             -8123.9955      236.08312      22836.37     
+      2800   307.85097     -8158.3212      0             -8121.6322     -1342.5406      22953.629    
+      2900   308.823       -8158.2824      0             -8121.4775     -6000.7712      23083.102    
+      3000   305.53824     -8155.2444      0             -8118.831      -8668.4112      23208.911    
+Loop time of 1.42981 on 1 procs for 3000 steps with 1912 atoms
+
+Performance: 181.283 ns/day, 0.132 hours/ns, 2098.180 timesteps/s, 4.012 Matom-step/s
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.61639    | 0.61639    | 0.61639    |   0.0 | 43.11
+Neigh   | 0.054842   | 0.054842   | 0.054842   |   0.0 |  3.84
+Comm    | 0.44698    | 0.44698    | 0.44698    |   0.0 | 31.26
+Output  | 0.00027558 | 0.00027558 | 0.00027558 |   0.0 |  0.02
+Modify  | 0.25127    | 0.25127    | 0.25127    |   0.0 | 17.57
+Other   |            | 0.06004    |            |       |  4.20
+
+Nlocal:           1912 ave        1912 max        1912 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           2116 ave        2116 max        2116 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          45015 ave       45015 max       45015 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 45015
+Ave neighs/atom = 23.54341
+Neighbor list builds = 221
+Dangerous builds = 0
+Total wall time: 0:00:01

@@ -1,0 +1,30 @@
+~/Kokkos-work/TracerX/INSTALL/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=$INSTALL_BASE/lib64/libkokkoscore.bca --link-llvm-lib=$INSTALL_BASE/lib64/libkokkoscontainers.bca ./parallel_for_lambda.bc
+
+
+#VM example
+~/Kokkos-work/TracerX/INSTALL/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/KLOKKOS/VirtualMachine/build/libKokkosVM.bca ./race_condition_example_vm_3.bc
+
+#Feb 17/2023 
+#
+#See where we make KokkosVM or Kokkos-model
+#
+~/Kokkos-work/TracerX/INSTALL/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosVM.bca ./race_condition_example_vm_3.bc
+
+~/Kokkos-work/TracerX/INSTALL/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosVM.bca ./race_condition_example_vm_3.bc
+/home-emu/smukher/Kokkos-work/klee-kokkos-vm/build/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosVM.bca ./race_condition_example_vm_3.bc
+
+
+===== Calling with my NEW version of KLEE =====
+/home-emu/smukher/Kokkos-work/klee-kokkos-vm/build/bin/klee --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-kokkos-vm/libKokkosVM.bca --np 4 ./race_condition_example_vm_3.bc
+
+=====
+/home-emu/smukher/Kokkos-work/klee-2.3-latest/install_klee/bin/klee  --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosModel.bca ./race_condition_example_vm_3.bc
+
+======
+
+export INSTALL_BASE=/home-emu/smukher/Kokkos-work/TracerX/INSTALL
+-sh-4.2$ /home-emu/smukher/Kokkos-work/klee-2.3-latest/install_klee/bin/klee  --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosModel.bca ./race_condition_example_vm_3.bc
+
+
+=== Latest June 15, 2023 Shyamali ====
+/home-emu/smukher/Kokkos-work/klee-2.3-latest/install_klee/bin/klee  --libc=uclibc --posix-runtime --external-calls=all --libcxx --link-llvm-lib=$INSTALL_BASE/lib/libc++abi.bca --link-llvm-lib=/home-emu/smukher/Kokkos-work/build-kokkos-vm/libKokkosVM.bca ./race_condition_example_vm_2.bc

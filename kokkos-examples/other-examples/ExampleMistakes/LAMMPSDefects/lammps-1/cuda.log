@@ -1,0 +1,122 @@
+LAMMPS (15 Sep 2022)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+package kokkos
+package kokkos newton on neigh half
+units metal
+newton on
+boundary p p m
+atom_style atomic
+
+# Graphene lattice
+lattice custom 2.419         a1    0                 1.0     0             a2    $(sqrt(3)/2)      0.5     0             a3    $(1/(2*sqrt(3)))  0.5     0.83          basis 0                 0       0             basis $(1/3)            $(1/3)  0.0
+lattice custom 2.419         a1    0                 1.0     0             a2    0.86602540378443859659      0.5     0             a3    $(1/(2*sqrt(3)))  0.5     0.83          basis 0                 0       0             basis $(1/3)            $(1/3)  0.0
+lattice custom 2.419         a1    0                 1.0     0             a2    0.86602540378443859659      0.5     0             a3    0.28867513459481292104  0.5     0.83          basis 0                 0       0             basis $(1/3)            $(1/3)  0.0
+lattice custom 2.419         a1    0                 1.0     0             a2    0.86602540378443859659      0.5     0             a3    0.28867513459481292104  0.5     0.83          basis 0                 0       0             basis 0.33333333333333331483            $(1/3)  0.0
+lattice custom 2.419         a1    0                 1.0     0             a2    0.86602540378443859659      0.5     0             a3    0.28867513459481292104  0.5     0.83          basis 0                 0       0             basis 0.33333333333333331483            0.33333333333333331483  0.0
+Lattice spacing in x,y,z = 2.7932206 4.838 2.00777
+
+# Simulation box & atoms
+region simreg block 5 15 5 15 0 0.5
+region boxreg block 0 20 0 20 -5 5
+create_box 1 boxreg
+Created orthogonal box = (0 0 -10.03885) to (55.864412 96.76 10.03885)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 region simreg basis 1 1
+Created 554 atoms
+  using lattice units in orthogonal box = (0 0 -10.03885) to (55.864412 96.76 10.03885)
+  create_atoms CPU = 0.000 seconds
+
+# Pull part of the sheet
+region PB_region block INF INF 65.0 INF INF 1 units box # Pull block
+group PB region PB_region
+95 atoms in group PB
+group integrate subtract all PB
+459 atoms in group integrate
+fix move_PB PB move linear 0 2 0 units box
+
+# Dynamics
+mass 1 12.0107
+
+velocity integrate create 1.0 5432373 dist gaussian
+pair_style tersoff
+pair_coeff * * C.tersoff C
+
+timestep 0.001
+fix nve integrate nve
+
+# Output
+thermo 1000
+dump 1 all custom 100 dump_reproduce.data id type x y z vx vy vz
+run 25000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.1
+  ghost atom cutoff = 4.1
+  binsize = 4.1, bins = 14 24 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair tersoff/kk, perpetual
+      attributes: full, newton on, kokkos_device
+      pair build: full/bin/kk/device
+      stencil: full/bin/3d
+      bin: kk/device
+WARNING: Fixes cannot yet send exchange data in Kokkos communication, switching to classic exchange/border communication (src/KOKKOS/comm_kokkos.cpp:651)
+Per MPI rank memory allocation (min/avg/max) = 1.928 | 1.928 | 1.928 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0.82820976    -3818.7281      0             -3818.6689      15661.267      108528.81    
+      1000   429.74474     -3852.928       0             -3822.2095      2082.2905      108528.81    
+      2000   422.34868     -3846.8936      0             -3816.7038      2351.9428      108528.81    
+      3000   417.70919     -3846.8932      0             -3817.035       2546.6295      108528.81    
+      4000   409.94556     -3846.2178      0             -3816.9145      2427.565       108528.81    
+      5000   426.59746     -3845.8485      0             -3815.355       3437.462       108528.81    
+      6000   418.52016     -3846.7358      0             -3816.8196      2758.2568      108528.81    
+      7000   435.19781     -3846.9857      0             -3815.8774      3271.3676      108528.81    
+      8000   416.51888     -3846.2613      0             -3816.4881      2713.4923      108528.81    
+      9000   417.31751     -3846.7616      0             -3816.9314      3517.3928      108528.81    
+     10000   439.94384     -3847.4063      0             -3815.9588      2615.4803      108528.81    
+     11000   418.15228     -3845.7013      0             -3815.8114      3405.5202      108528.81    
+     12000   413.53632     -3846.7604      0             -3817.2004      3220.9914      108528.81    
+     13000   397.38456     -3876.7955      0             -3848.3901      1288.661       108528.81    
+     14000   433.02438     -3846.0155      0             -3815.0625      3057.2718      108528.81    
+     15000   436.64187     -3846.9028      0             -3815.6913      3540.7178      108528.81    
+     16000   246738.55     -3610.1244      0              14026.96       3965.7338      4771785.4    
+     17000   248781.01     -3553.0397      0              14230.041      746.74908      25367326     
+     18000   248821.65     -3554.9046      0              14231.081      415.86479      45962867     
+     19000   248679.83     -3543.429       0              14232.42       285.77435      66558407     
+     20000   248879.94     -3556.7603      0              14233.392      220.54014      87153948     
+     21000   248780.04     -3548.0215      0              14234.989      176.5579       1.0774949e+08
+     22000   248876.91     -3554.2388      0              14235.697      149.49252      1.2834503e+08
+     23000   248865.6      -3552.6188      0              14236.508      127.842        1.4894057e+08
+     24000   248983.78     -3561.5966      0              14235.978      112.78433      1.6953611e+08
+     25000   248951.33     -3558.5794      0              14236.676      101.04055      1.9013165e+08
+Loop time of 324.079 on 1 procs for 25000 steps with 554 atoms
+
+Performance: 6.665 ns/day, 3.601 hours/ns, 77.142 timesteps/s, 42.736 katom-step/s
+33.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 4.867      | 4.867      | 4.867      |   0.0 |  1.50
+Neigh   | 313.66     | 313.66     | 313.66     |   0.0 | 96.78
+Comm    | 1.1509     | 1.1509     | 1.1509     |   0.0 |  0.36
+Output  | 0.133      | 0.133      | 0.133      |   0.0 |  0.04
+Modify  | 3.2149     | 3.2149     | 3.2149     |   0.0 |  0.99
+Other   |            | 1.056      |            |       |  0.33
+
+Nlocal:            554 ave         554 max         554 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         8376 ave        8376 max        8376 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 8376
+Ave neighs/atom = 15.119134
+Neighbor list builds = 9561
+Dangerous builds = 9236
+Total wall time: 0:05:24

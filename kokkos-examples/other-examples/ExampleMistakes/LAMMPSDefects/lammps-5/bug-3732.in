@@ -1,0 +1,60 @@
+units       metal
+boundary    p p p
+atom_style  atomic
+
+read_data structure1.txt
+
+change_box all triclinic
+mass 1      12
+
+#replicate 2 2 2
+
+pair_style pace product chunksize 4096
+pair_coeff * * c_ace.yace C
+
+##################################
+#Parameters#
+variable    randomSeed equal        40         
+variable    timeStepLength equal    0.001    #In ps
+variable    tDamp equal             0.1
+variable    pDamp equal             1
+##################################
+
+
+#Calculating new Variables
+timestep    ${timeStepLength}
+
+#Starting simulation
+
+dump dump1 all custom 100 out.dump id type x y z vx vy vz fx fy fz
+
+reset_timestep 0
+
+#restart    500 runtime/restart.*
+
+#Initialize velocities
+
+velocity all create 4000 ${randomSeed}
+
+#Randomize structure at high temperature
+
+#comm_style tiled
+#fix bal all balance 100 1.0 rcb
+#balance 1.1 shift xyz 20 1.05
+
+thermo 100
+
+fix data1 all print 500 "$(step) $(temp) $(pxx) $(pyy) $(pzz) $(press) $(etotal) $(vol) $(density) $(pe) $(ke) $(cella) $(cellb) $(cellc) $(cellalpha) $(cellbeta) $(cellgamma)" append thermo_data.txt screen no
+
+fix 1 all npt temp 2000 2000 ${tDamp} iso 0 0 ${pDamp}
+
+
+run 400
+
+unfix data1
+unfix 1
+
+#Write out a liquid structure
+
+write_data final.data
+

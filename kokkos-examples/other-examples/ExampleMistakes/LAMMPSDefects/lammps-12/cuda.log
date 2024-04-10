@@ -1,0 +1,23 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+Switching to CHARMM coulomb energy conversion constant (src/MOLECULE/pair_lj_charmmfsw_coul_charmmfsh.cpp:56)
+Reading cmap grid potential file charmm22.cmap with DATE: 2016-09-26
+Reading data file ...
+  orthogonal box = (-34.414709 -36.134827 -39.349142) to (45.585291 43.865173 40.650858)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  34 atoms
+  scanning bonds ...
+  0 = max bonds/atom
+  scanning angles ...
+  0 = max angles/atom
+  scanning dihedrals ...
+  0 = max dihedrals/atom
+  scanning impropers ...
+  0 = max impropers/atom
+  reading bonds ...
+  0 bonds
+ERROR: Bonds assigned incorrectly (src/read_data.cpp:1573)
+Last command: read_data       gagg.data fix cmap crossterm CMAP

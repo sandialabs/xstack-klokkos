@@ -1,0 +1,39 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+Reading data file ...
+  orthogonal box = (0 0 0) to (32.13 32.13 32.13)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  5832 atoms
+  read_data CPU = 0.018 seconds
+Changing box ...
+  triclinic box = (0 0 0) to (32.13 32.13 32.13) with tilt (0 0 0)
+ACE version: 2022.6.27
+Product evaluator is used
+Loading c_ace.yace
+Total number of basis functions
+	C: 20 (r=1) 455 (r>1)
+Mapping LAMMPS atom type #1(C) -> ACE species type #0
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7.5
+  ghost atom cutoff = 7.5
+  binsize = 7.5, bins = 5 5 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair pace/kk, perpetual
+      attributes: full, newton on, kokkos_device
+      pair build: full/bin/kk/device
+      stencil: full/bin/3d
+      bin: kk/device
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Kokkos failed to allocate memory for label "pace:ylm".  Allocation using MemorySpace named "Cuda" failed with the following error:  Allocation of size 894.3 M failed, likely due to insufficient memory.  (The allocation mechanism was cudaMalloc().  The Cuda allocation returned the error code ""cudaErrorMemoryAllocation".)
+
+Aborted (core dumped)
+

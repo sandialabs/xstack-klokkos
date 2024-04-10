@@ -1,0 +1,139 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 1.5874011 1.5874011 1.5874011
+Created orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  1 by 1 by 1 MPI processor grid
+Created 7529 atoms
+  using lattice units in orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  create_atoms CPU = 0.004 seconds
+7529 atoms in group plate
+Created 3589 atoms
+  using lattice units in orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  create_atoms CPU = 0.003 seconds
+3589 atoms in group projectile
+Displacing atoms ...
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2
+  ghost atom cutoff = 2.6
+  binsize = 2, bins = 32 35 35
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) command create_bonds, occasional
+      attributes: full, newton on
+      pair build: full/bin
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+WARNING: Required border comm not yet implemented in Kokkos communication, switching to classic exchange/border communication (src/KOKKOS/comm_kokkos.cpp:900)
+Added 38559 bonds, new total = 38559
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        1        1       
+  special bond factors coul:  0        1        1       
+    15 = max # of 1-2 neighbors
+   101 = max # of special neighbors
+  special bonds CPU = 0.004 seconds
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+WARNING: Bonds are defined but no bond style is set (src/force.cpp:193)
+WARNING: Likewise 1-2 special neighbor interactions != 1.0 (src/force.cpp:195)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2
+  ghost atom cutoff = 2.6
+  binsize = 2, bins = 32 35 35
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) command create_bonds, occasional
+      attributes: full, newton on
+      pair build: full/bin
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Added 21869 bonds, new total = 60428
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        1        1       
+  special bond factors coul:  0        1        1       
+    16 = max # of 1-2 neighbors
+   101 = max # of special neighbors
+  special bonds CPU = 0.003 seconds
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 1.3
+  ghost atom cutoff = 2.6
+  binsize = 2, bins = 32 35 35
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 0
+  Time step     : 0.1
+WARNING: Fixes cannot yet send exchange data in Kokkos communication, switching to classic exchange/border communication (src/KOKKOS/comm_kokkos.cpp:651)
+Per MPI rank memory allocation (min/avg/max) = 16.3 | 16.3 | 16.3 Mbytes
+   Step         KinEng         PotEng          Pxx            Pyy            Pzz          c_tbond    
+         0   0.0010167873   0              7.298968e-05   0              0              10.8703      
+      1000   0.00078828988  0              7.3079869e-05 -6.6410613e-06 -1.198683e-06   10.728368    
+      2000   0.00061717894  0              4.6698781e-05 -2.5473048e-05 -2.7703615e-05  10.567188    
+      3000   0.00045227799  0              1.4877381e-05  1.9327036e-05  2.1189491e-05  10.414283    
+      4000   0.00041121728  0              2.3491325e-05  1.1284572e-05 -5.8651451e-06  10.364634    
+      5000   0.00038747496  0              2.3604378e-05 -1.1730201e-06 -6.1109701e-06  10.343047    
+      6000   0.00037170895  0              2.4053051e-05 -4.7805476e-06 -6.5364344e-06  10.327397    
+      7000   0.00036147339  0              2.1695417e-05  8.1209769e-06  5.1391427e-06  10.324519    
+      8000   0.00035993669  0              2.2829764e-05  2.6156242e-07 -6.0675935e-08  10.319842    
+      9000   0.0003559785   0              2.1732272e-05  3.0301414e-06 -1.6761201e-06  10.317323    
+     10000   0.00035456214  0              2.3083565e-05  4.6815032e-06  1.567089e-06   10.314985    
+     11000   0.00035113594  0              2.3382691e-05  5.2080466e-07  1.0358163e-06  10.307373    
+     12000   0.00034609171  0              2.0753851e-05 -3.2789729e-08 -2.0997447e-06  10.219204    
+     13000   0.00034084074  0              2.0658208e-05  2.0554421e-06 -2.4794422e-06  10.083094    
+     14000   0.00033616524  0              1.9705188e-05 -1.136e-06      2.8847129e-06  9.9452531    
+     15000   0.00033290197  0              1.6445964e-05 -2.9778216e-06  1.2693432e-06  9.7956778    
+     16000   0.00032793773  0              1.3043398e-05 -3.9717002e-06  1.9765512e-06  9.6441629    
+     17000   0.0003220246   0              1.1116883e-05  1.1874877e-07 -4.1682579e-07  9.5875746    
+     18000   0.00032344366  0              8.4998557e-06  8.778392e-07  -7.7480888e-08  9.5336927    
+     19000   0.00031604784  0              5.8908557e-06  1.039506e-08   2.4567218e-07  9.524359     
+     20000   0.00032023492  0              4.6103601e-06  5.4870826e-07  1.0601559e-06  9.533861     
+Loop time of 30.9071 on 1 procs for 20000 steps with 2274 atoms
+
+Performance: 5590949.599 tau/day, 647.101 timesteps/s, 1.472 Matom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 2.106      | 2.106      | 2.106      |   0.0 |  6.81
+Bond    | 10.683     | 10.683     | 10.683     |   0.0 | 34.56
+Neigh   | 4.2663     | 4.2663     | 4.2663     |   0.0 | 13.80
+Comm    | 1.6087     | 1.6087     | 1.6087     |   0.0 |  5.20
+Output  | 0.0099052  | 0.0099052  | 0.0099052  |   0.0 |  0.03
+Modify  | 9.8213     | 9.8213     | 9.8213     |   0.0 | 31.78
+Other   |            | 2.412      |            |       |  7.80
+
+Nlocal:           2274 ave        2274 max        2274 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:           8811 ave        8811 max        8811 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 8811
+Ave neighs/atom = 3.8746702
+Ave special neighs/atom = 9.9296394
+Neighbor list builds = 810
+Dangerous builds = 0
+Total wall time: 0:00:31

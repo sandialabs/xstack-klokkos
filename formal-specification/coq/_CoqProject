@@ -1,0 +1,5 @@
+-R . Kokkos
+-arg -w
+-arg all
+Kokkos.v
+

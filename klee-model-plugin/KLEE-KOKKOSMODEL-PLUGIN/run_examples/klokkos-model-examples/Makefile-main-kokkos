@@ -1,0 +1,1 @@
+clang++  -DKOKKOS_DEPENDENCE -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/NEW_KOKKOK/include -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/NEW_KOKKOS/include -I/home-emu/smukher/Kokkos-work/klee/include -fopenmp=libomp -DKOKKOS_DEPENDENCE -fopenmp=libomp -march=core-avx2 -mtune=core-avx2 -emit-llvm  -c -g parallel_for_lambda.cpp

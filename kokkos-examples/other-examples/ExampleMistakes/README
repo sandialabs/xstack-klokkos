@@ -1,0 +1,15 @@
+DeepSoftCopyBug1: This can happen when a user does not understand. Deep/Soft copy semantics of Kokkos::View
+
+InitializationBug: This is not specific to Kokkos. It is just a C++ coding mistake using default for initialization. C++ specification does not define exact values for default. However, this mistake never reveals in many situations.  I am hoping KLEE at least find them as "undetermined."
+
+NestedLoopBug1: This program has two mistakes. (1) team barrier is necessary before entering the parallel_reduce and (2) the row sum only needs one thread per term to update the number.
+
+NotUsingAtomicsBug: This program computes histogram. The program produces wrong results without atomic operations.
+
+RaceCondition1:
+
+ViewOutOfBoundBug1: Simple coding mistake. It sets a wrong size for Kokkos::View in the range policy.
+
+ViewOutofBoundBug2: The error happens when team_size is not 1 (GPUs). Since the index is computed by team_size * laegue_rank + team_rank (in the team) with team policy (N,AUTO), index can be greater than N.
+
+
