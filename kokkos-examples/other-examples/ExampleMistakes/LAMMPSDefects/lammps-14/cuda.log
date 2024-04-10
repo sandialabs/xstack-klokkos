@@ -1,0 +1,73 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 3.615 3.615 3.615
+Created orthogonal box = (0 0 0) to (14.46 14.46 14.46)
+  1 by 1 by 1 MPI processor grid
+Created 256 atoms
+  using lattice units in orthogonal box = (0 0 0) to (14.46 14.46 14.46)
+  create_atoms CPU = 0.001 seconds
+Reading comb potential file ffield.comb with DATE: 2011-02-22
+Pair COMB:
+  generating Coulomb integral lookup table ...
+  element[1] = Cu, z = 0.454784
+  will not apply over-coordination correction ...
+Neighbor list info ...
+  update: every = 1 steps, delay = 1 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 12.5
+  ghost atom cutoff = 12.5
+  binsize = 12.5, bins = 2 2 2
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair comb, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.0002
+Per MPI rank memory allocation (min/avg/max) = 7.658 | 7.658 | 7.658 Mbytes
+   Step          Temp          TotEng         PotEng         E_vdwl         E_coul         Press          Volume           Lx             Ly             Lz             Xz      
+         0   10.1          -3.5063151     -3.5076155     -3.5076155      0              27.496055      3023.4645      14.46          14.46          14.46          0            
+         1   10.420825     -3.5062737     -3.5076155     -3.5076155      0             -58.85976       3023.4645      14.46          14.46          14.46          0            
+         2   11.480471     -3.5061372     -3.5076153     -3.5076153      0             -136.55103      3023.4645      14.46          14.46          14.46          0            
+         3   14.06663      -3.5058039     -3.5076151     -3.5076151      0             -196.35934      3023.4645      14.46          14.46          14.46          0            
+         4   19.281933     -3.505132      -3.5076147     -3.5076147      0             -225.38524      3023.4645      14.46          14.46          14.46          0            
+         5   28.543488     -3.503939      -3.5076141     -3.5076141      0             -207.04071      3023.4645      14.46          14.46          14.46          0            
+         6   43.582169     -3.5020017     -3.5076131     -3.5076131      0             -121.03787      3023.4645      14.46          14.46          14.46          0            
+         7   66.441619     -3.499057      -3.5076117     -3.5076117      0              56.626892      3023.4645      14.46          14.46          14.46          0            
+         8   99.476892     -3.4948013     -3.5076094     -3.5076094      0              353.69435      3023.4645      14.46          14.46          14.46          0            
+         9   145.3527      -3.4888911     -3.507606      -3.507606       0              801.66996      3023.4645      14.46          14.46          14.46          0            
+        10   207.04122     -3.4809431     -3.5076008     -3.5076008      0              1435.8584      3023.4645      14.46          14.46          14.46          0            
+Loop time of 0.0819277 on 1 procs for 10 steps with 256 atoms
+
+Performance: 2.109 ns/day, 11.379 hours/ns, 122.059 timesteps/s, 31.247 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.073811   | 0.073811   | 0.073811   |   0.0 | 90.09
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0034852  | 0.0034852  | 0.0034852  |   0.0 |  4.25
+Output  | 0.00031499 | 0.00031499 | 0.00031499 |   0.0 |  0.38
+Modify  | 0.0021813  | 0.0021813  | 0.0021813  |   0.0 |  2.66
+Other   |            | 0.002135   |            |       |  2.61
+
+Nlocal:            256 ave         256 max         256 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4375 ave        4375 max        4375 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:       172544 ave      172544 max      172544 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 172544
+Ave neighs/atom = 674
+Neighbor list builds = 0
+Dangerous builds = 0
+Total wall time: 0:00:00

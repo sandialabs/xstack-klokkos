@@ -1,0 +1,17 @@
+LAMMPS (28 Mar 2023 - Development)
+[leo:76358] *** Process received signal ***
+[leo:76358] Signal: Segmentation fault (11)
+[leo:76358] Signal code: Address not mapped (1)
+[leo:76358] Failing at address: 0x55721bd24580
+[leo:76358] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x42520)[0x7f9310242520]
+[leo:76358] [ 1] ../../build/lmp(+0x252ee0)[0x5571ca40aee0]
+[leo:76358] [ 2] ../../build/lmp(+0x48f494)[0x5571ca647494]
+[leo:76358] [ 3] ../../build/lmp(+0x8237a4)[0x5571ca9db7a4]
+[leo:76358] [ 4] ../../build/lmp(+0x2cefd7)[0x5571ca486fd7]
+[leo:76358] [ 5] ../../build/lmp(+0x1dcdff)[0x5571ca394dff]
+[leo:76358] [ 6] ../../build/lmp(+0x1dd135)[0x5571ca395135]
+[leo:76358] [ 7] ../../build/lmp(+0x1755ee)[0x5571ca32d5ee]
+[leo:76358] [ 8] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x7f9310229d90]
+[leo:76358] [ 9] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x7f9310229e40]
+[leo:76358] [10] ../../build/lmp(+0x1bc6d5)[0x5571ca3746d5]
+[leo:76358] *** End of error message ***

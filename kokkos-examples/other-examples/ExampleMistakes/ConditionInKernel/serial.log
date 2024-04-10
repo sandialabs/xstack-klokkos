@@ -1,0 +1,37 @@
+reading dimensions from file: ../input.txt2
+input string:8 5
+
+number of dimensions:2
+n_rows: 8
+n_cols: 5
+Multiplication of given two matrices (8x5).(5x1) using kokkos constructs is:
+10988.2
+16235.3
+10246.4
+6232.96
+6759.43
+15596
+13817.6
+11972.6
+value of vector y before dot operation is:
+14.0222
+93.1132
+8.1959
+9.98256
+88.9686
+75.081
+68.4533
+63.2976
+value of vector y after dot operation is:
+62.2976
+93.1132
+8.1959
+9.98256
+88.9686
+75.081
+68.4533
+63.2976
+Dot product of resultant matrix (8x1) with a vector (8x1) using Kokkos parallel constructs is:
+5.288044e+06
+Dot product of resultant matrix (8x1) with a vector (8x1) using non-Kokkos C++ is:
+5.818505e+06

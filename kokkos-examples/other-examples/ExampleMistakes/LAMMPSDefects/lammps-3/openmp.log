@@ -1,0 +1,169 @@
+LAMMPS (15 Sep 2022)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  using 1 OpenMP thread(s) per MPI task
+package kokkos
+package kokkos
+# 2d LJ obstacle flow
+
+dimension	2
+boundary	p s p
+
+atom_style	atomic
+neighbor	0.3 bin
+neigh_modify	delay 5
+
+# create geometry
+
+lattice		hex 0.7
+Lattice spacing in x,y,z = 1.2843567 2.2245711 1.2843567
+region		box block 0 40 0 10 -0.25 0.25
+create_box	3 box
+Created orthogonal box = (0 0 -0.32108918) to (51.374269 22.245711 0.32108918)
+  1 by 1 by 1 MPI processor grid
+create_atoms	1 box
+Created 840 atoms
+  using lattice units in orthogonal box = (0 -0.0022245711 -0.32108918) to (51.374269 22.247936 0.32108918)
+  create_atoms CPU = 0.005 seconds
+
+mass		1 1.0
+mass		2 1.0
+mass		3 1.0
+
+# LJ potentials
+
+pair_style	lj/cut 1.12246
+pair_coeff	* * 1.0 1.0 1.12246
+
+# define groups
+
+region	        1 block INF INF INF 1.25 INF INF
+group		lower region 1
+120 atoms in group lower
+region		2 block INF INF 8.75 INF INF INF
+group		upper region 2
+120 atoms in group upper
+group		boundary union lower upper
+240 atoms in group boundary
+group		flow subtract all boundary
+600 atoms in group flow
+
+set		group lower type 2
+Setting atom values ...
+  120 settings made for type
+set		group upper type 3
+Setting atom values ...
+  120 settings made for type
+
+# initial velocities
+
+compute	        mobile flow temp
+velocity	flow create 1.0 482748 temp mobile
+fix		1 all nve
+fix		2 flow temp/rescale 200 1.0 1.0 0.02 1.0
+fix_modify	2 temp mobile
+
+# Poiselle flow
+
+velocity	boundary set 0.0 0.0 0.0
+fix		3 lower setforce 0.0 0.0 0.0
+fix		4 upper setforce 0.0 NULL 0.0
+fix		5 upper aveforce 0.0 -0.5 0.0
+fix		6 flow addforce 1.0 0.0 0.0
+
+# 2 obstacles
+
+region		void1 sphere 10 4 0 3
+delete_atoms	region void1
+Deleted 36 atoms, new total = 804
+region		void2 sphere 20 7 0 3
+delete_atoms	region void2
+Deleted 35 atoms, new total = 769
+
+fix		7 flow indent 100 sphere 10 4 0 4
+fix		8 flow indent 100 sphere 20 7 0 4
+fix		9 all enforce2d
+
+# Run
+
+timestep	0.003
+thermo		1000
+thermo_modify	temp mobile
+WARNING: Temperature for thermo pressure is not for group all (src/thermo.cpp:520)
+
+#dump		1 all atom 100 dump.obstacle
+
+#dump		2 all image 500 image.*.jpg type type #		zoom 1.6 adiam 1.5
+#dump_modify	2 pad 5
+
+#dump		3 all movie 500 movie.mpg type type #		zoom 1.6 adiam 1.5
+#dump_modify	3 pad 5
+
+run		25000
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 5 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 1.42246
+  ghost atom cutoff = 1.42246
+  binsize = 0.71123, bins = 73 32 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/kk, perpetual
+      attributes: half, newton on, kokkos_device
+      pair build: half/bin/kk/device
+      stencil: half/bin/2d
+      bin: kk/device
+Per MPI rank memory allocation (min/avg/max) = 0.8413 | 0.8413 | 0.8413 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   1.0027471      0              0              0.68849216     0.46317653     1143.0857    
+      1000   1             -0.33689286     0              0.34971312     1.2905426      1286.7728    
+      2000   1             -0.36746164     0              0.31914434     1.1668828      1313.44      
+      3000   1             -0.52004761     0              0.16655837     1.4177738      1324.489     
+      4000   1             -0.50522628     0              0.1813797      1.4876251      1370.8738    
+      5000   1             -0.48017748     0              0.2064285      1.2797965      1408.1916    
+      6000   1             -0.46127392     0              0.22533207     1.1916695      1435.4532    
+      7000   1             -0.44613371     0              0.24047227     1.268542       1453.9916    
+      8000   1             -0.42913548     0              0.25747051     0.96105591     1462.0618    
+      9000   1             -0.38477247     0              0.30183351     1.1775308      1452.1664    
+     10000   1             -0.3856435      0              0.30096248     1.0309499      1452.6684    
+     11000   1             -0.3983764      0              0.28822958     1.0186091      1449.1542    
+     12000   1             -0.41050362     0              0.27610236     1.015072       1446.2323    
+     13000   1             -0.38305737     0              0.30354862     1.0469306      1450.5838    
+     14000   1             -0.38117986     0              0.30542612     0.94652909     1457.5411    
+     15000   1             -0.3861759      0              0.30043009     1.0789192      1457.6624    
+     16000   1             -0.37262943     0              0.31397655     1.0197826      1460.3946    
+     17000   1             -0.39304011     0              0.29356587     1.0030397      1461.4232    
+     18000   1             -0.38325746     0              0.30334852     1.0433852      1468.4262    
+     19000   1             -0.39830174     0              0.28830425     1.1037964      1467.8975    
+     20000   1             -0.35053772     0              0.33606826     1.0203752      1471.3042    
+     21000   1             -0.35592463     0              0.33068135     0.99549203     1461.9394    
+     22000   1             -0.3400905      0              0.34651548     1.064317       1464.072     
+     23000   1             -0.38914149     0              0.29746449     1.0333045      1467.7629    
+     24000   1             -0.38194213     0              0.30466385     0.93702163     1468.9221    
+     25000   1             -0.3858693      0              0.30073668     1.0495629      1467.1438    
+Loop time of 4.46867 on 1 procs for 25000 steps with 769 atoms
+
+Performance: 1450096.683 tau/day, 5594.509 timesteps/s, 4.302 Matom-step/s
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.3941     | 1.3941     | 1.3941     |   0.0 | 31.20
+Neigh   | 0.35486    | 0.35486    | 0.35486    |   0.0 |  7.94
+Comm    | 0.058094   | 0.058094   | 0.058094   |   0.0 |  1.30
+Output  | 0.00062661 | 0.00062661 | 0.00062661 |   0.0 |  0.01
+Modify  | 2.026      | 2.026      | 2.026      |   0.0 | 45.34
+Other   |            | 0.635      |            |       | 14.21
+
+Nlocal:            769 ave         769 max         769 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:             45 ave          45 max          45 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:           1607 ave        1607 max        1607 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 1607
+Ave neighs/atom = 2.0897269
+Neighbor list builds = 1641
+Dangerous builds = 0
+Total wall time: 0:00:04

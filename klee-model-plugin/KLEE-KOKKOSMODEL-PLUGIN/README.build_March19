@@ -1,0 +1,31 @@
+module purge
+
+-sh-4.2$ module list
+Currently Loaded Modulefiles:
+  1) cmake/3.19.1   2) llvm/9.0.1     3) gcc/10.2.0
+
+
+Lots of problem with DSO symboll missing
+
+export INSTALL_BASE
+
+-sh-4.2$ echo $INSTALL_BASE
+/home-emu/smukher/Kokkos-work/TracerX/INSTALL
+
+note we should pickup gcc/4.8.5
+
+link.txt in toolss/CMakeFiles/kleaver/link.txt
+
+/opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/gcc-10.2.0-ma6gxdrtbd2qqlwq4sirnm3c4vnzcetb/bin/g++ -fno-rtti -lstdc++ -O3 -DNDEBUG CMakeFiles/kleaver.dir/main.cpp.o -o ../../bin/kleaver  -Wl,-rpath,/home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib: ../../lib/libkleaverSolver.a /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMCore.a /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMSupport.a ../../lib/libkleeBasic.a ../../lib/libkleaverExpr.a ../../lib/libkleeSupport.a /usr/lib64/libz.so /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libz3.so /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMBinaryFormat.a /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMRemarks.a /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMSupport.a -lz -lrt -ldl -ltinfo -lpthread -lm /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib/libLLVMDemangle.a
+
+
+Following error took 5 hours to resolve with corect gcc compiler:
+
+[ 21%] Linking CXX executable ../../bin/kleaver
+/usr/bin/ld: /opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-5.5.0/llvm-9.0.1-isbmi7byzku7urwwdcp3dlvgkn4s2ras/lib/libLLVMSupport.a(CommandLine.cpp.o): undefined reference to symbol '_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm@@GLIBCXX_3.4.21'
+/opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/gcc-10.2.0-ma6gxdrtbd2qqlwq4sirnm3c4vnzcetb/lib64/libstdc++.so.6: error adding symbols: DSO missing from command line
+clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [bin/kleaver] Error 1
+make[1]: *** [tools/kleaver/CMakeFiles/kleaver.dir/all] Error 2
+make: *** [all] Error 2
+

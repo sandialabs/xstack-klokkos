@@ -1,0 +1,60 @@
+units 		real
+atom_style      charge
+
+lattice 	bcc 2.87
+region		bulto block -5 5 -5 5 -5 5
+create_box      1 bulto
+create_atoms	1 region bulto
+
+mass * 55.845
+# Choose potential
+pair_style      reax/c NULL checkqeq no
+pair_coeff      * * CHOFeAlNiCuSCr_v3.ff Fe
+
+
+
+
+neighbor   3.5 bin
+neigh_modify    every 2 delay 4 check yes page 100000
+
+velocity        all create 300.0 4928459 rot yes dist gaussian
+
+compute         msd all msd
+
+compute         Stress all stress/atom NULL virial
+compute         pe all pe/atom
+compute         ke all ke/atom
+
+
+
+timestep        1
+
+fix 		npt all nph iso 0 0 1000
+
+
+
+thermo          100
+thermo_style custom step temp pe ke etotal vol press c_msd[4] 
+dump  mydump all custom 1000 dump.coordenadas id type q x y z vx vy vz c_pe c_ke c_Stress[1] c_Stress[2] c_Stress[3]
+
+fix 		1 all langevin  300 1500 100 29345 zero yes
+run 10000
+
+
+label loop_heating
+variable i loop 151 260
+variable Temp equal $i*10
+fix 		1 all langevin ${Temp} ${Temp} 100 29345 zero yes
+run 2000
+next i
+jump SELF loop_heating
+
+
+label loop_cooling
+variable i loop 1 200
+variable Temp equal (260-$i)*10
+fix 		1 all langevin ${Temp} ${Temp} 100 29345 zero yes
+run 2000
+next i
+jump SELF loop_cooling
+

@@ -1,0 +1,13 @@
+# OS and Editors
+.DS_Store
+.*.sw[o,p]
+*~
+\#*\#
+tags
+
+# Coq
+*.glob
+*.vo
+*.vok
+*.vos
+

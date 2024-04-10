@@ -1,0 +1,112 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+Created orthogonal box = (0 0 0) to (16.795962 16.795962 16.795962)
+  1 by 1 by 1 MPI processor grid
+Created 4000 atoms
+  using lattice units in orthogonal box = (0 0 0) to (16.795962 16.795962 16.795962)
+  create_atoms CPU = 0.002 seconds
+Setting atom values ...
+  1400 settings made for type
+Balancing ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 2 steps, delay = 4 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.3
+  ghost atom cutoff = 5.3
+  binsize = 2.65, bins = 7 7 7
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/kk, perpetual
+      attributes: half, newton on, kokkos_device
+      pair build: half/bin/newton/kk/device
+      stencil: half/bin/3d
+      bin: kk/device
+ rebalancing time: 0.001 seconds
+  iteration count = 1
+  initial/final maximal load/proc = 4000 4000
+  initial/final imbalance factor  = 1 1
+  x cuts: 0 1
+  y cuts: 0 1
+  z cuts: 0 1
+Balancing ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+ rebalancing time: 0.000 seconds
+  iteration count = 0
+  initial/final maximal load/proc = 4000 4000
+  initial/final imbalance factor  = 1 1
+  x cuts: 0 1
+  y cuts: 0 1
+  z cuts: 0 1
+Balancing ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+ rebalancing time: 0.001 seconds
+  iteration count = 1
+  weight variable: weight
+  initial/final maximal load/proc = 4000 4000
+  initial/final imbalance factor  = 1 1
+  x cuts: 0 1
+  y cuts: 0 1
+  z cuts: 0 1
+Balancing ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+ rebalancing time: 0.000 seconds
+  iteration count = 0
+  initial/final maximal load/proc = 4000 4000
+  initial/final imbalance factor  = 1 1
+  x cuts: 0 1
+  y cuts: 0 1
+  z cuts: 0 1
+2600 atoms in group fast
+1400 atoms in group slow
+Balancing ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+ rebalancing time: 0.000 seconds
+  iteration count = 1
+  group weights: fast=1 slow=1
+  initial/final maximal load/proc = 4000 4000
+  initial/final imbalance factor  = 1 1
+  x cuts: 0 1
+  y cuts: 0 1
+  z cuts: 0 1
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 0
+  Time step     : 0.005
+Per MPI rank memory allocation (min/avg/max) = 4.004 | 4.004 | 4.004 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   1             -6.9453205      0             -5.4456955     -5.6812358    
+        50   0.49343306    -6.1890561      0             -5.4490916     -1.6483231    
+       100   0.52386654    -6.2348776      0             -5.4492742     -1.8379451    
+       150   0.52968856    -6.243444       0             -5.4491098     -1.9059995    
+       200   0.54668296    -6.2680971      0             -5.4482777     -2.0255944    
+       250   0.54533472    -6.2647473      0             -5.4469498     -1.9835576    
+Loop time of 1.25345 on 1 procs for 250 steps with 4000 atoms
+
+Performance: 86162.484 tau/day, 199.450 timesteps/s, 797.801 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.88669    | 0.88669    | 0.88669    |   0.0 | 70.74
+Neigh   | 0.34142    | 0.34142    | 0.34142    |   0.0 | 27.24
+Comm    | 0.011091   | 0.011091   | 0.011091   |   0.0 |  0.88
+Output  | 0.0001101  | 0.0001101  | 0.0001101  |   0.0 |  0.01
+Modify  | 0.0068416  | 0.0068416  | 0.0068416  |   0.0 |  0.55
+Other   |            | 0.007295   |            |       |  0.58
+
+Nlocal:           4000 ave        4000 max        4000 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          13851 ave       13851 max       13851 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         596298 ave      596298 max      596298 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 596298
+Ave neighs/atom = 149.0745
+Neighbor list builds = 24
+Dangerous builds = 0
+Total wall time: 0:00:01

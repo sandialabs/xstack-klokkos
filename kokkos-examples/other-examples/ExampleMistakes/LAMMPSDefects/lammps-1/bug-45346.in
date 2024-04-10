@@ -1,0 +1,39 @@
+units metal
+newton on 
+boundary p p m  
+atom_style atomic 
+
+# Graphene lattice
+lattice custom 2.419 &
+        a1    0                 1.0     0     &
+        a2    $(sqrt(3)/2)      0.5     0     &
+        a3    $(1/(2*sqrt(3)))  0.5     0.83  &
+        basis 0                 0       0     &
+        basis $(1/3)            $(1/3)  0.0
+
+# Simulation box & atoms
+region simreg block 5 15 5 15 0 0.5 
+region boxreg block 0 20 0 20 -5 5 
+create_box 1 boxreg
+create_atoms 1 region simreg basis 1 1
+
+# Pull part of the sheet
+region PB_region block INF INF 65.0 INF INF 1 units box # Pull block
+group PB region PB_region 
+group integrate subtract all PB
+fix move_PB PB move linear 0 2 0 units box 
+
+# Dynamics            
+mass 1 12.0107  
+
+velocity integrate create 1.0 5432373 dist gaussian
+pair_style tersoff
+pair_coeff * * C.tersoff C 
+
+timestep 0.001
+fix nve integrate nve 
+
+# Output
+thermo 1000
+dump 1 all custom 100 dump_reproduce.data id type x y z vx vy vz
+run 25000

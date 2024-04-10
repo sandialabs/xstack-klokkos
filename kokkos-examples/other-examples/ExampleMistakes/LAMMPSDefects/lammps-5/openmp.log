@@ -1,0 +1,70 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  using 1 OpenMP thread(s) per MPI task
+Reading data file ...
+  orthogonal box = (0 0 0) to (32.13 32.13 32.13)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  5832 atoms
+  read_data CPU = 0.034 seconds
+Changing box ...
+  triclinic box = (0 0 0) to (32.13 32.13 32.13) with tilt (0 0 0)
+ACE version: 2022.6.27
+Product evaluator is used
+Loading c_ace.yace
+Total number of basis functions
+	C: 20 (r=1) 455 (r>1)
+Mapping LAMMPS atom type #1(C) -> ACE species type #0
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7.5
+  ghost atom cutoff = 7.5
+  binsize = 3.75, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair pace/kk, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Per MPI rank memory allocation (min/avg/max) = 12.4 | 12.4 | 12.4 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   4000          -52016.81       0             -49001.947      108727.65      33168.985    
+       100   1925.144      -50456.83       0             -49005.819      13516.927      34074.916    
+       200   1976.3462     -50451.084      0             -48961.48      -37518.634      34506.084    
+       300   2027.3461     -50450.664      0             -48922.621      1261.2836      34186.827    
+       400   2006.6872     -50408.8        0             -48896.328      22284.685      34013.251    
+Loop time of 1268.41 on 1 procs for 400 steps with 5832 atoms
+
+Performance: 0.027 ns/day, 880.842 hours/ns, 0.315 timesteps/s, 1.839 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1264.8     | 1264.8     | 1264.8     |   0.0 | 99.72
+Neigh   | 0.094452   | 0.094452   | 0.094452   |   0.0 |  0.01
+Comm    | 0.060522   | 0.060522   | 0.060522   |   0.0 |  0.00
+Output  | 0.041661   | 0.041661   | 0.041661   |   0.0 |  0.00
+Modify  | 2.8446     | 2.8446     | 2.8446     |   0.0 |  0.22
+Other   |            | 0.5235     |            |       |  0.04
+
+Nlocal:           5832 ave        5832 max        5832 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          12798 ave       12798 max       12798 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:  1.70444e+06 ave 1.70444e+06 max 1.70444e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 1704436
+Ave neighs/atom = 292.25583
+Neighbor list builds = 1
+Dangerous builds = 0
+System init for write_data ...
+Total wall time: 0:21:12

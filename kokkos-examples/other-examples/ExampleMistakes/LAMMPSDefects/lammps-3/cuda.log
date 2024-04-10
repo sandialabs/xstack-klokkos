@@ -1,0 +1,52 @@
+hwloc/linux: Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+hwloc/linux: Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+LAMMPS (15 Sep 2022)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  will use up to 1 GPU(s) per node
+Kokkos::OpenMP::initialize WARNING: OMP_PROC_BIND environment variable not set
+  In general, for best performance with OpenMP 4.0 or better set OMP_PROC_BIND=spread and OMP_PLACES=threads
+  For best performance with OpenMP 3.1 set OMP_PROC_BIND=true
+  For unit testing set OMP_PROC_BIND=false
+  using 1 OpenMP thread(s) per MPI task
+Kokkos::DualView::modify ERROR: Concurrent modification of host and device views in DualView ""
+
+Backtrace:
+                  [0x55e549926209]
+                  [0x55e54991ab1e]
+                  [0x55e54991ab4f]
+                  [0x55e546f51b56]
+                  [0x55e547cbf036]
+                  [0x55e546eeac30]
+                  [0x55e547cc2a02]
+                  [0x55e54753630e]
+                  [0x55e546a5f2d3]
+                  [0x55e546a86796]
+                  [0x55e5469d0395]
+                  [0x7f71881d7d90]
+__libc_start_main [0x7f71881d7e40]
+                  [0x55e546a32a25]
+[leo:64683] *** Process received signal ***
+[leo:64683] Signal: Aborted (6)
+[leo:64683] Signal code:  (-6)
+[leo:64683] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x42520)[0x7f71881f0520]
+[leo:64683] [ 1] /lib/x86_64-linux-gnu/libc.so.6(pthread_kill+0x12c)[0x7f7188244a7c]
+[leo:64683] [ 2] /lib/x86_64-linux-gnu/libc.so.6(raise+0x16)[0x7f71881f0476]
+[leo:64683] [ 3] /lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x7f71881d67f3]
+[leo:64683] [ 4] ../../build_all_packages/lmp(+0x31cbb54)[0x55e54991ab54]
+[leo:64683] [ 5] ../../build_all_packages/lmp(+0x802b56)[0x55e546f51b56]
+[leo:64683] [ 6] ../../build_all_packages/lmp(+0x1570036)[0x55e547cbf036]
+[leo:64683] [ 7] ../../build_all_packages/lmp(+0x79bc30)[0x55e546eeac30]
+[leo:64683] [ 8] ../../build_all_packages/lmp(+0x1573a02)[0x55e547cc2a02]
+[leo:64683] [ 9] ../../build_all_packages/lmp(+0xde730e)[0x55e54753630e]
+[leo:64683] [10] ../../build_all_packages/lmp(+0x3102d3)[0x55e546a5f2d3]
+[leo:64683] [11] ../../build_all_packages/lmp(+0x337796)[0x55e546a86796]
+[leo:64683] [12] ../../build_all_packages/lmp(+0x281395)[0x55e5469d0395]
+[leo:64683] [13] /lib/x86_64-linux-gnu/libc.so.6(+0x29d90)[0x7f71881d7d90]
+[leo:64683] [14] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80)[0x7f71881d7e40]
+[leo:64683] [15] ../../build_all_packages/lmp(+0x2e3a25)[0x55e546a32a25]
+[leo:64683] *** End of error message ***
+Aborted (core dumped)

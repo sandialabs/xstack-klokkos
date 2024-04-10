@@ -1,0 +1,70 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 1.5874011 1.5874011 1.5874011
+Created orthogonal box = (0 0 0) to (7.9370053 7.9370053 15.874011)
+  1 by 1 by 1 MPI processor grid
+Created 350 atoms
+  using lattice units in orthogonal box = (0 0 0) to (7.9370053 7.9370053 15.874011)
+  create_atoms CPU = 0.001 seconds
+0 atoms in group addatoms
+150 atoms in group mobile
+WARNING: Temperature for thermo pressure is not for group all (src/thermo.cpp:521)
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 5.3
+  ghost atom cutoff = 5.3
+  binsize = 2.65, bins = 3 3 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/kk, perpetual
+      attributes: half, newton on, kokkos_device
+      pair build: half/bin/newton/kk/device
+      stencil: half/bin/3d
+      bin: kk/device
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 0
+  Time step     : 0.005
+Per MPI rank memory allocation (min/avg/max) = 3.41 | 3.41 | 3.41 Mbytes
+   Step        Atoms         Temp          E_pair         TotEng         Press     
+         0         350   0             -6.9215833     -6.9215833     -1.0052629    
+      1000         360   0.90166409    -5.7117645     -5.6741951     -0.48081465   
+      2000         370   1.1920257     -5.6026834     -5.5060327     -0.63420946   
+      3000         380   1.1832159     -5.4735704     -5.3334527     -0.54737112   
+      4000         390   1.0202754     -5.4563891     -5.2994236     -0.56876149   
+      5000         400   1.1117306     -5.3226818     -5.1142323     -0.53729405   
+      6000         410   1.1209482     -5.1937456     -4.9476838     -0.486807     
+      7000         420   0.96595097    -5.2607408     -5.019253      -0.66640597   
+      8000         430   1.0319669     -5.1825687     -4.8945779     -0.56286371   
+      9000         440   1.127378      -5.1941765     -4.8482764     -0.82959081   
+WARNING: Particle deposition was unsuccessful (src/fix_deposit.cpp:586)
+     10000         449   1.0476538     -5.1018668     -4.7553711     -0.62481981   
+Loop time of 3.7194 on 1 procs for 10000 steps with 449 atoms
+
+Performance: 1161478.450 tau/day, 2688.608 timesteps/s, 1.207 Matom-step/s
+105.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.7573     | 1.7573     | 1.7573     |   0.0 | 47.25
+Neigh   | 1.5098     | 1.5098     | 1.5098     |   0.0 | 40.59
+Comm    | 0.087066   | 0.087066   | 0.087066   |   0.0 |  2.34
+Output  | 0.00018425 | 0.00018425 | 0.00018425 |   0.0 |  0.00
+Modify  | 0.25195    | 0.25195    | 0.25195    |   0.0 |  6.77
+Other   |            | 0.1131     |            |       |  3.04
+
+Nlocal:            449 ave         449 max         449 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1944 ave        1944 max        1944 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          27392 ave       27392 max       27392 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 27392
+Ave neighs/atom = 61.006682
+Neighbor list builds = 1158
+Dangerous builds = 0
+Total wall time: 0:00:03

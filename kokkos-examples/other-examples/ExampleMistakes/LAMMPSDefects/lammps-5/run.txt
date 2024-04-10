@@ -1,0 +1,1 @@
+mpiexec -np 4 lmp  -k on g 4 -sf kk -pk kokkos newton on neigh half cuda/aware off -in anneal.in

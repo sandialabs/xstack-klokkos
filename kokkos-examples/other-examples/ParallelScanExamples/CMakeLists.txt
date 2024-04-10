@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.17)
+project(HelloWorldExample)
+
+# Put the location of Kokkos (Change to your own directory)
+set(CMAKE_PREFIX_PATH /Users/knteran/Kokkos)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(ParallelScan_Lambda1 parallel_scan_lambda1.cpp)
+#add_executable(HelloWorld2 hello_world2.cpp)
+#add_executable(HelloWorld3 hello_world3.cpp)
+#add_executable(HelloWorld4 hello_world4.cpp)
+#add_executable(HelloWorld5 hello_world5.cpp)
+#add_executable(HelloWorld_NoKokkos hello_world_nokokkos.cpp)
+
+find_package(Kokkos)
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+target_link_libraries(ParallelScan_Lambda1 PUBLIC Kokkos::kokkos)
+#target_link_libraries(HelloWorld2  PUBLIC Kokkos::kokkos)
+#target_link_libraries(HelloWorld3  PUBLIC Kokkos::kokkos)
+#target_link_libraries(HelloWorld4  PUBLIC Kokkos::kokkos)
+#target_link_libraries(HelloWorld5  PUBLIC Kokkos::kokkos)
+#target_link_libraries(HelloWorld_NoKokkos  PUBLIC Kokkos::kokkos)

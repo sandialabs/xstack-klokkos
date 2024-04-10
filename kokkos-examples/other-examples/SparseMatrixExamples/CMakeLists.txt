@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.17)
+project(SparseMatrixExample)
+
+# Put the location of Kokkos (Change to your own directory)
+set(CMAKE_PREFIX_PATH /home/knt/Kokkos_V100)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(SparseMatirxNoKokkos1 SparseMatrixExampleNoKokkos.cpp)
+#add_executable(SparseMatirxNoKokkos3 SparseMatrixExampleNoKokkos.cpp)
+
+add_executable(SparseMatirxExample1 SparseMatrixExample1.cpp)
+add_executable(SparseMatirxExample2 SparseMatrixExample2.cpp)
+add_executable(SparseMatirxExample3 SparseMatrixExample3.cpp)
+#add_executable(SparseMatirxExample3 SparseMatrixExample3.cpp)
+#add_executable(SparseMatirxExample4 SparseMatrixExample4.cpp)
+#add_executable(SparseMatirxExample5 SparseMatrixExample5.cpp)
+#add_executable(SparseMatirxExample6 SparseMatrixExample6.cpp)
+#add_executable(SparseMatirxExample7 SparseMatrixExample7.cpp)
+
+
+find_package(Kokkos)
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+    set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+#
+target_link_libraries(SparseMatirxNoKokkos1 PUBLIC)
+#target_link_libraries(SparseMatirxNoKokkos3 PUBLIC)
+target_link_libraries(SparseMatirxExample1 PUBLIC Kokkos::kokkos)
+target_link_libraries(SparseMatirxExample2 PUBLIC Kokkos::kokkos)
+target_link_libraries(SparseMatirxExample3 PUBLIC Kokkos::kokkos)

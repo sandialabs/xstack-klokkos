@@ -1,0 +1,136 @@
+LAMMPS (28 Mar 2023 - Development)
+KOKKOS mode is enabled (src/KOKKOS/kokkos.cpp:106)
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 1.5874011 1.5874011 1.5874011
+Created orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  1 by 1 by 1 MPI processor grid
+Created 7529 atoms
+  using lattice units in orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  create_atoms CPU = 0.004 seconds
+7529 atoms in group plate
+Created 3589 atoms
+  using lattice units in orthogonal box = (-39.685026 -34.922823 -34.922823) to (23.811016 34.922823 34.922823)
+  create_atoms CPU = 0.001 seconds
+3589 atoms in group projectile
+Displacing atoms ...
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2
+  ghost atom cutoff = 2.6
+  binsize = 1, bins = 64 70 70
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) command create_bonds, occasional
+      attributes: full, newton on
+      pair build: full/bin
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Added 38559 bonds, new total = 38559
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        1        1       
+  special bond factors coul:  0        1        1       
+    15 = max # of 1-2 neighbors
+   101 = max # of special neighbors
+  special bonds CPU = 0.003 seconds
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+WARNING: Bonds are defined but no bond style is set (src/force.cpp:193)
+WARNING: Likewise 1-2 special neighbor interactions != 1.0 (src/force.cpp:195)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2
+  ghost atom cutoff = 2.6
+  binsize = 1, bins = 64 70 70
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) command create_bonds, occasional
+      attributes: full, newton on
+      pair build: full/bin
+      stencil: full/bin/3d
+      bin: standard
+  (2) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Added 21869 bonds, new total = 60428
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        1        1       
+  special bond factors coul:  0        1        1       
+    16 = max # of 1-2 neighbors
+   101 = max # of special neighbors
+  special bonds CPU = 0.002 seconds
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 1.3
+  ghost atom cutoff = 2.6
+  binsize = 0.65, bins = 98 108 108
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair bpm/spring, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 0
+  Time step     : 0.1
+Per MPI rank memory allocation (min/avg/max) = 21.67 | 21.67 | 21.67 Mbytes
+   Step         KinEng         PotEng          Pxx            Pyy            Pzz          c_tbond    
+         0   0.0010167873   0              7.298968e-05   0              0              10.8703      
+      1000   0.00078828988  0              7.3079869e-05 -6.6410613e-06 -1.198683e-06   10.728368    
+      2000   0.00061717894  0              4.6698781e-05 -2.5473048e-05 -2.7703615e-05  10.567188    
+      3000   0.00045227799  0              1.4877378e-05  1.9327028e-05  2.1189487e-05  10.414283    
+      4000   0.00041121725  0              2.3491321e-05  1.1284552e-05 -5.8651828e-06  10.364634    
+      5000   0.0003874751   0              2.3605017e-05 -1.1717561e-06 -6.1096566e-06  10.343047    
+      6000   0.00037171137  0              2.4042351e-05 -4.7685141e-06 -6.5167219e-06  10.327397    
+      7000   0.00036143663  0              2.1726529e-05  8.1284788e-06  5.0386437e-06  10.324519    
+      8000   0.00035986386  0              2.2692021e-05 -3.1219405e-07  2.2710142e-07  10.319842    
+      9000   0.00035606252  0              2.2190931e-05  3.4712234e-06 -2.0325315e-06  10.317503    
+     10000   0.00035455372  0              2.3067907e-05  3.9355869e-06  1.073179e-06   10.315165    
+     11000   0.00035080121  0              2.2945726e-05  5.9106939e-07 -7.0161542e-07  10.308607    
+     12000   0.00034590549  0              2.0948528e-05  8.5870316e-08 -3.3696782e-06  10.216861    
+     13000   0.00034106067  0              2.0904663e-05  2.0170174e-06 -4.0601005e-08  10.082607    
+     14000   0.00033622691  0              1.9167264e-05 -6.3781426e-07  4.1731031e-06  9.9462751    
+     15000   0.00033476997  0              1.7117879e-05 -9.1577217e-07  1.1318678e-06  9.7999265    
+     16000   0.00033224138  0              1.4550675e-05  3.192732e-06   4.8127929e-06  9.6573477    
+     17000   0.00033001017  0              1.2245732e-05  3.1532216e-06  1.8622204e-06  9.5867624    
+     18000   0.00033152387  0              8.5030312e-06 -2.4027664e-06 -6.2199738e-07  9.5211646    
+     19000   0.00032690218  0              6.0020023e-06  6.1878752e-07  4.8159201e-07  9.5348989    
+     20000   0.00033410248  0              4.6533615e-06  1.1550704e-06  1.3627299e-06  9.5161433    
+Loop time of 23.108 on 1 procs for 20000 steps with 2261 atoms
+
+Performance: 7477933.222 tau/day, 865.502 timesteps/s, 1.957 Matom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.8112     | 1.8112     | 1.8112     |   0.0 |  7.84
+Bond    | 11.254     | 11.254     | 11.254     |   0.0 | 48.70
+Neigh   | 4.7422     | 4.7422     | 4.7422     |   0.0 | 20.52
+Comm    | 0.092012   | 0.092012   | 0.092012   |   0.0 |  0.40
+Output  | 0.0097157  | 0.0097157  | 0.0097157  |   0.0 |  0.04
+Modify  | 2.876      | 2.876      | 2.876      |   0.0 | 12.45
+Other   |            | 2.323      |            |       | 10.05
+
+Nlocal:           2261 ave        2261 max        2261 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:           8761 ave        8761 max        8761 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 8761
+Ave neighs/atom = 3.8748341
+Ave special neighs/atom = 9.9314463
+Neighbor list builds = 812
+Dangerous builds = 0
+Total wall time: 0:00:23

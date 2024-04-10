@@ -1,0 +1,26 @@
+#clang -I../../include/ -emit-llvm -c -g sort.c
+
+# compile CXX with /opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-5.5.0/llvm-9.0.1-isbmi7byzku7urwwdcp3dlvgkn4s2ras/bin/clang++
+ CXX_DEFINES = -DKOKKOS_DEPENDENCE
+#
+ CXX_INCLUDES = -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include
+#
+ CXX_FLAGS =  -fopenmp=libomp -fopenmp=libomp -march=core-avx2 -mtune=core-avx2 -std=gnu++14
+#
+#
+
+/opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-5.5.0/llvm-9.0.1-isbmi7byzku7urwwdcp3dlvgkn4s2ras/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ParallelForExample1_Lambda.dir/parallel_for_lambda.cpp.o -c /home-emu/smukher/Kokkos-work/KLOKKOS/KokkosExamples/ExampleParallelFor/parallel_for_lambda.cpp
+
+
+/opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-5.5.0/llvm-9.0.1-isbmi7byzku7urwwdcp3dlvgkn4s2ras/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -DKOKKOS_DEPENDENCE -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -I/home-emu/smukher/Kokkos-work/klee/include -fopenmp=libomp -DKOKKOS_DEPENDENCE -fopenmp=libomp -march=core-avx2 -mtune=core-avx2 -emit-llvm  -c -g /home-emu/smukher/Kokkos-work/KLOKKOS/KokkosExamples/ExampleParallelFor/parallel_for_lambda.cpp
+
+#Linking
+
+/opt/spack/c7.7/compilers-20201207/spack/opt/spack/linux-centos7-x86_64/gcc-5.5.0/llvm-9.0.1-isbmi7byzku7urwwdcp3dlvgkn4s2ras/bin/clang++  -fopenmp=libomp -DKOKKOS_DEPENDENCE -fopenmp=libomp -march=core-avx2 -mtune=core-avx2 CMakeFiles/ParallelForExample1_Lambda.dir/parallel_for_lambda.cpp.o -o ParallelForExample1_Lambda  /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib64/libkokkoscontainers.a /home-emu/smukher/Kokkos-work/TracerX/INSTALL/lib64/libkokkoscore.a /usr/lib64/libdl.so
+
+#### June 16th with operator overloading
+
+clang++  -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -I/home-emu/smukher/Kokkos-work/klee/include -I/home-emu/smukher/Kokkos-work/Kokkos-Model  -I/home-emu/smukher/Kokkos-work/klee/include  /home-emu/smukher/Kokkos-work/build-klokkos-model/libKokkosModel.bca  -emit-llvm  -c -g race_condition_example_vm_3.cpp
+
+#
+clang++  -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -isystem /home-emu/smukher/Kokkos-work/TracerX/INSTALL/include -I/home-emu/smukher/Kokkos-work/klee/include -I/home-emu/smukher/Kokkos-work/KLOKKOS_NEW_FEB/KLOKKOS/VirtualMachine/core_CPP  /home-emu/smukher/Kokkos-work/build-kokkos-vm/libKokkosVM.a  -emit-llvm  -c -g race_condition_example_vm_2.cpp 
