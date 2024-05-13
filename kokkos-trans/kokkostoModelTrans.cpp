@@ -13,6 +13,14 @@
 #include "llvm/Support/CommandLine.h"
 #include "llvm/Support/Regex.h"
 
+
+/* This is a translator that serves to support source-to-source translation from Kokkos to a Kokkos program enhanced 
+* with the Kokkos Model.  
+* The Kokkos Model library is a simplified detemplatized version of Kokkos. The Kokkos Model library is
+* used for more easily applying program analysis tools, e.g., LLVM's KLEE. Providing this source-to-source 
+* translation allows Kokkos application programmers to not have to do the source translation manually. 
+*/
+
 using namespace clang;
 using namespace clang::tooling;
 static llvm::cl::OptionCategory KokkosTransCategory("KlokkosTrans options");
@@ -318,7 +326,7 @@ namespace __internal__ {
         return false;
     }
 
-    bool toBeCheckpointed(const ASTContext *Context, const Stmt *body, const ValueDecl* var, bool isLambda) {
+    bool toBeAnalyzed(const ASTContext *Context, const Stmt *body, const ValueDecl* var, bool isLambda) {
         clang::DiagnosticsEngine &DE = Context->getDiagnostics();
         const unsigned ID = DE.getCustomDiagID(clang::DiagnosticsEngine::Remark, "%0 will be transformed to Kokkos Model (Found in LHS)");
         const unsigned ID_SUBVIEW = DE.getCustomDiagID(clang::DiagnosticsEngine::Remark, "View::subview detected, working with the full view (%0) .");
@@ -490,28 +498,28 @@ public:
         for (auto p = classdecl->decls_begin(); p != classdecl->decls_end(); p++) {
             FieldDecl *fd = dyn_cast<FieldDecl>(*p);
             if (fd) {
-                if (__internal__::toBeCheckpointed(Context, opdecl->getBody(), fd, false)) {
+                if (__internal__::toBeProgAnalyzed(Context, opdecl->getBody(), fd, false)) {
                     vars.push_back(fd->getName().str());
                 }
             }
         }
 
-        // Replacement 1 : operator() {} -> operator() {} void checkpoint() { checkpoint(); ... };
+        // Replacement 1 : operator() {} -> operator() {} void progAnalysis() { progAnalysis(); ... };
         auto endOfOperatorCallToken = clang::Lexer::findNextToken(opdecl->getEndLoc(), TheRewriter.getSourceMgr(), TheRewriter.getLangOpts());
         SourceManager &SM = TheRewriter.getSourceMgr();
         if (endOfOperatorCallToken.hasValue()) {
             SourceLocation endOfOperatorCall = endOfOperatorCallToken.getValue().getLocation();
             static std::vector<SourceLocation> processed;
             FileID FID = SM.getFileID(endOfOperatorCall);
-            std::array<std::string, 2> mess = __internal__::generateCheckpointCalls(vars);
+            std::array<std::string, 2> mess = __internal__::generateProgAnalysisCalls(vars);
             std::string checkpoint_function = "/*Auto-generated from parallel_for at: " + pfor->getBeginLoc().printToString(SM) + "*/\n";
             if (std::find(processed.begin(), processed.end(), endOfOperatorCall) == processed.end()) {
-                checkpoint_function += "template<typename F>\n";
-                checkpoint_function += "void point(F fun){\n";
-                checkpoint_function += mess[0];
-                checkpoint_function += "fun();";
-                checkpoint_function += mess[1];
-                checkpoint_function += "}";
+                proganalysis_function += "template<typename F>\n";
+                proganalysis_function += "void point(F fun){\n";
+                proganalysis_function += mess[0];
+                proganalysis_function += "fun();";
+                proganalysis_function += mess[1];
+                proganalysis_function += "}";
             }
             processed.push_back(endOfOperatorCall);
             
@@ -576,7 +584,7 @@ public:
                 }
             }
         } else {
-            llvm_unreachable("could not find where to put Klokkos Model LB API");
+            llvm_unreachable("could not find where to put Klokkos Model LB");
         }
         // Replacement 2 : parallel_for(functor); -> parallel_for(functor); functor.profilelb();
         SourceLocation endOfParallelForCall = clang::Lexer::findLocationAfterToken(pfor->getEndLoc(), tok::semi, TheRewriter.getSourceMgr(), TheRewriter.getLangOpts(), false);
@@ -607,7 +615,7 @@ public:
         const ForStmt *loop;
         if (__internal__::insideForStmt(pfor, &loop, Context)) {
 #if 0
-            if (TheRewriter.InsertText(loop->getBeginLoc(), "KokkosModelLB::loop_enter();\n", true, true)) {}
+            if (TheRewriter.InsertText(loop->getBeginLoc(), "KokkosModel::loop_enter();\n", true, true)) {}
             if (const DeclStmt *declStmt = dyn_cast<DeclStmt>(loop->getInit())) {
                 if (const ValueDecl *var = dyn_cast<ValueDecl>(declStmt->getSingleDecl())) {
                     const Stmt *body = loop->getBody();
