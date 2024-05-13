@@ -69,7 +69,7 @@ namespace __internal__ {
         return false;
     }
 
-    std::array<std::string, 2> generateCheckpointCalls(std::vector<std::string> &vars) {
+    std::array<std::string, 2> generateProgAnalysisCalls(std::vector<std::string> &vars) {
 #if 0
         std::string mes = "\nstd::vector<Kokkos::ViewBase*> vect" + LN + "(";
         for (unsigned int i = 0; i < vars.size(); i++) {
@@ -77,15 +77,15 @@ namespace __internal__ {
             if (i < vars.size() - 1) mes += ", ";
         }
         mes +=  ");\n";
-        mes += "checkpoint(vect" + LN + ");";
+        mes += "analysis(vect" + LN + ");";
 #else
-        std::string pre = "KokkosModelRuntimeLB::beginRegion();\n";
+        std::string pre = "KokkosModel::beginRegion();\n";
         
         for(auto var : vars){
-            pre += "KokkosModelRuntimeLB::register_view(" + var + ");\n";
+            pre += "KokkosModel::register_view(" + var + ");\n";
         }
 
-        pre += "KokkosModelRuntimeLB::run([&]{\n";
+        pre += "KokkosModel::run([&]{\n";
 
         std::string post = "});\n";
         
