@@ -39,3 +39,4 @@ Another approach to analyze Kokkos programs is to translate them into a simpler 
 This work is funded by the Department of Energy Advanced Scientific Computing Research (ASCR) X-Stack Programming Environments For Scientific Computing project (DE-FOA-0002460).
 
 Sandia National Laboratories is a multimission laboratory managed and operated by National Technology and Engineering Solutions of Sandia, LLC., a wholly owned subsidiary of Honeywell International, Inc., for the U.S. Department of Energy’s National Nuclear Security Administration under contract DE-NA-0003525.
+
