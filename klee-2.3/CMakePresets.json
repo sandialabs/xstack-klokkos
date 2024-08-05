@@ -1,0 +1,82 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "displayName": "Klokkos Klee base ${presetName}",
+      "description": "Klokkos Klee CMake ${presetName} configuration",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "ENABLE_SOLVER_STP": true,
+        "ENABLE_SOLVER_Z3": true,
+        "ENABLE_KLEE_UCLIBC": true,
+        "ENABLE_POSIX_RUNTIME": true,
+        "ENABLE_KLEE_LIBCXX": true,
+        "ENABLE_KLEE_EH_CXX": true,
+        "ENABLE_SYSTEM_TESTS": false,
+        "ENABLE_UNIT_TESTS": false,
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/"
+      }
+    },
+    {
+      "name": "gadreel",
+      "inherits": "base",
+      "hidden": true,
+      "environment": {
+        "XSTACK" : "/srv/shared/xstack"
+      },
+      "displayName": "Klokkos Klee gadreel ${presetName}",
+      "cacheVariables": {
+        "LLVM_CONFIG_BINARY": "$env{XSTACK}/bin/llvm-config",
+        "KLEE_UCLIBC_PATH": "$env{XSTACK}/klee-uclibc",
+        "KLEE_LIBCXX_DIR": "$env{XSTACK}/libcxx/libc++-install-130/",
+        "KLEE_LIBCXX_INCLUDE_DIR": "$env{XSTACK}/libcxx/libc++-install-130/include/c++/v1/",
+        "KLEE_LIBCXXABI_SRC_DIR": "$env{XSTACK}/libcxx/llvm-130/libcxxabi/"
+      }
+    },
+    {
+      "name": "rr",
+      "inherits": "base",
+      "hidden": true,
+      "displayName": "Klokkos Klee rr ${presetName}",
+      "cacheVariables": {
+        "LLVM_CONFIG_BINARY": "/usr/local/stow/llvm-13/bin/llvm-config",
+        "KLEE_UCLIBC_PATH": "$env{HOME}/projects/foss/klee-uclibc",
+        "KLEE_LIBCXX_DIR": "$env{HOME}/projects/foss/klee-libcxx/libc++-install-130/",
+        "KLEE_LIBCXX_INCLUDE_DIR": "$env{HOME}/projects/foss/klee-libcxx/libc++-install-130/include/c++/v1/",
+        "KLEE_LIBCXXABI_SRC_DIR": "$env{HOME}/projects/foss/klee-libcxx/llvm-130/libcxxabi/"
+      }
+    },
+    {
+      "name": "gadreel-debug",
+      "inherits": "gadreel",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "gadreel-release",
+      "inherits": "gadreel",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "rr-debug",
+      "inherits": "rr",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "rr-release",
+      "inherits": "rr",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ]
+}
