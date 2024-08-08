@@ -3,7 +3,7 @@
 KOKKOS_MOCK_DIR=${KOKKOS_MOCK_DIR:-../kokkos-mock}
 KLEE_DIR=${KLEE_DIR:-../klee/install}
 BITCODE=build-bitcode
-examples=(example1 example2 example3 example3-1 example4 example5 example5-1)
+examples=(example-dcm example-io example-msm1 example-msm2 example-smv example-voob1 example-voob2)
 
 function is-binary {
   type "$1" &>/dev/null
