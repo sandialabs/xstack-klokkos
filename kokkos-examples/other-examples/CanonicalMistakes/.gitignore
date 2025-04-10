@@ -1,6 +1,0 @@
-cg-example*.pdf
-example*.ll
-example*.bc
-
-/build
-/klee-*
