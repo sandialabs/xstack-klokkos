@@ -1,5 +1,5 @@
 # X-Stack KLOKKOS: Automated Test Generation for Performance Portable Programs Using Clang/LLVM and Formal Methods
-KLOKKOS is a portmanteau of Klee and Kokkos, is a project to develop automated test generation for performance-portable programs using Clang/LLVM and formal methods.
+KLOKKOS is a portmanteau of Klee and Kokkos, is a project to develop automated test generation for performance-portable programs - specifically Kokkos parallel programs - using Clang/LLVM and formal methods.
 
 ## Overview
 Kokkos is a C++ software library to write portable, high-performance parallel code. However, software developed in Kokkos often has maintainability challenges, since there are subtle differences between architectures that may not appear in traditional testing, or cannot be tested (e.g., predicted behavior on future architectures).
@@ -15,10 +15,16 @@ Ultimately, this results in tools that can generate test cases for programs (tha
 This repository contains many different projects. As such there is not yet one unified way to perform test generation or modeling, however during this project we have developed several different approaches, outlined below.
 
 ### Kokkos Examples
-It has been convenient for us to outline useful examples demonstrating the most common classes of mistakes Kokkos developers tend to make in order to test the analysis capabilities of our tools. These consist of
-- mini apps: small but complete Kokkos problems solving an idealized, but still interesting problem.
-- canonical mistakes: A small number of minimal working examples that have common mistakes Kokkos users make.
-- other examples: a collection of kernels that identify key features of Kokkos.
+It has been convenient for us to outline useful examples demonstrating the most common classes of mistakes Kokkos developers tend to make in order to test the analysis capabilities of our tools. These consist of a collection of kernels that identify key features of Kokkos.
+These are common computations in real-world Kokkos applications that are bug-prone.
+### Kokkos Mistakes
+These consist of a canonical set of examples of typical portability mistakes encountered in a survey of the Kokkos examples above.
+
+### KLEE-2.3
+Source code snapshot of our modified (forked) KLEE version 2.3.
+
+### Mock Kokkos
+Because KOKKOS is so complex, we use a "mock" back-end that provides a bare functionality to simplify analysis, while still providing the key API functionality.
 
 ### Formal Specification
 This is a very early first draft towards a formal specification in Coq. The main work is continuing elsewhere, in preparation for publication and will likely be pen-and-paper in addition to some Coq formalization. Stay tuned!
@@ -26,8 +32,6 @@ This is a very early first draft towards a formal specification in Coq. The main
 ### Klee plugin
 The KL part of KLOKKOS, this is a start at developing a KLEE plugin to do symbolic execution of Kokkos programs.
 
-### Mock Kokkos
-Because KOKKOS is so complex, we use a "mock" back-end that provides a bare functionality to simplify analysis, while still providing the key API functionality.
 
 ### Kokkos Translator
 Another approach to analyze Kokkos programs is to translate them into a simpler representation. This is implemented as a Clang tool.
