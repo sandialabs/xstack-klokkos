@@ -1,5 +1,5 @@
 # X-Stack KLOKKOS: Automated Test Generation for Performance Portable Programs Using Clang/LLVM and Formal Methods
-KLOKKOS is a portmanteau of Klee and Kokkos, is a project to develop automated test generation for performance-portable programs - specifically Kokkos parallel programs - using Clang/LLVM and formal methods. 
+KLOKKOS is a portmanteau of Klee and Kokkos, and is a project to develop automated test generation for performance-portable programs - specifically Kokkos parallel programs - using Clang/LLVM and formal methods. 
 
 
 ## Overview
